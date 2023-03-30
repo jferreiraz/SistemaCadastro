@@ -2,6 +2,7 @@ package com.example.sistemacadastro;
 
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +12,10 @@ import android.app.Activity;
 public class ListagemActivity extends Activity {
 
     Button btanterior, btproximo, btfechar;
-    TextView txtnome, txttelefone, txtendereco, txtstatus;
+    TextView txtnome, txttelefone, txtendereco, txtemail, txtstatus;
     int index;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class ListagemActivity extends Activity {
         txtnome = (TextView) findViewById(R.id.txtnome);
         txtendereco = (TextView) findViewById(R.id.txtendereco);
         txttelefone = (TextView) findViewById(R.id.txttelefone);
+        txtemail = (TextView) findViewById(R.id.txtemail);
         txtstatus = (TextView) findViewById(R.id.txtstatus);
 
         PreencheCampos(index);
@@ -62,8 +65,9 @@ public class ListagemActivity extends Activity {
     private void PreencheCampos(int idx)
     {
         txtnome.setText(RegistrosManager.getRegistros().get(idx).getNome());
-        txttelefone.setText(RegistrosManager.getRegistros().get(idx).getTelefone());
         txtendereco.setText(RegistrosManager.getRegistros().get(idx).getEndereco());
+        txttelefone.setText(RegistrosManager.getRegistros().get(idx).getTelefone());
+        txtemail.setText(RegistrosManager.getRegistros().get(idx).getEmail());
     }
     private void AtualizaStatus(int idx)
     {

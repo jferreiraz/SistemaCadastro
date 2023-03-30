@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 public class CadastroActivity extends Activity {
 
-    EditText ednome,edendereco,edtelefone;
+    EditText ednome,edendereco,edtelefone,edemail;
     Button btcadastrar, btcancelar_cadastro;
 
     @Override
@@ -21,6 +21,7 @@ public class CadastroActivity extends Activity {
         ednome = (EditText) findViewById(R.id.ednome);
         edtelefone = (EditText) findViewById(R.id.edtelefone);
         edendereco = (EditText) findViewById(R.id.edendereco);
+        edemail = (EditText) findViewById(R.id.edemail);
         btcadastrar = (Button) findViewById(R.id.btcadastrar);
         btcancelar_cadastro = (Button) findViewById(R.id.btcancelar_cadastro);
         btcadastrar.setOnClickListener(new View.OnClickListener(){
@@ -39,7 +40,8 @@ public class CadastroActivity extends Activity {
                         String nome = ednome.getText().toString();
                         String telefone = edtelefone.getText().toString();
                         String endereco = edendereco.getText().toString();
-                        RegistrosManager.getRegistros().add(new Registro(nome,telefone,endereco));
+                        String email = edemail.getText().toString();
+                        RegistrosManager.getRegistros().add(new Registro(nome,telefone,endereco,email));
                         (new AlertDialog.Builder(CadastroActivity.this))
                                 .setTitle("Aviso")
                                 .setMessage("Cadastro efetuado com sucesso!")
